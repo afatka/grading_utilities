@@ -1,0 +1,14 @@
+proc polyRing8()
+{
+string $apfCylinder[] = `polyCylinder -r 1 -h 2 -sx 8 -sy 1 -sz 2 -ax 0 0 1 -rcp 0 -cuv 3 -ch 1`;
+select -r ($apfCylinder[0] + ".f[0:15]") ($apfCylinder[0] + ".f[24:31]");
+doDelete;
+select -r ($apfCylinder[0] + ".f[8:15]") ;
+doDelete;
+xform -cp $apfCylinder[0];
+xform -t 0 0 -1 $apfCylinder[0];
+select -r $apfCylinder[0];
+
+}
+
+polyRing8() 
