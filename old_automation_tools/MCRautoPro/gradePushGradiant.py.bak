@@ -23,26 +23,26 @@ def valueConvert(self, value):
 
 def loadPush():
     try:
-        print("LoadPush")
-        print("1")
+        print "LoadPush"
+        print "1"
         global geoNames
         global geoLayered
         global transFroze
         global histDel
         global pivotCenter
-        print("2")
+        print "2"
         geoNames = [mn.proONButton1, mn.proONButton2, mn.proONButton3]
-        print("3")
+        print "3"
         geoLayered = [mn.proOLButton1, mn.proOLButton2, mn.proOLButton3]
-        print("4")
+        print "4"
         transFroze = [mn.proFTButton1, mn.proFTButton2, mn.proFTButton3]
-        print("5")
+        print "5"
         histDel = [mn.proDHButton1, mn.proDHButton2, mn.proDHButton3]
-        print("6")
+        print "6"
         pivotCenter = [mn.proPCButton1, mn.proPCButton2, mn.proPCButton3]
-        print("7")
+        print "7"
     except AttributeError:
-        print("Push Functionality not loaded")
+        print "Push Functionality not loaded"
 
 #Push the file named correctly field
 def pushNamed(self, value):

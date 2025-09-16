@@ -5,6 +5,7 @@ Script to create a GUI in Autodesk Maya to hold supplimental grading tool: AutoP
 
 Created By: Adam Fatka
 adam.fatka@gmail.com
+www.fatkaforce.com
 
 The values in the GUI are objects that are flagged compared to total objects that may be effected.
 
@@ -19,13 +20,13 @@ in this case there is one pivot off center in a scene where two objects with piv
 import maya.cmds as mel
 import maya.cmds as cmds
 #imports professionalism functions
-from grading_utilities.old_automation_tools.MCRautoProJR import autoProJr as apj
+from MCRautoProJR import autoProJr as apj
 
 
 #debugging log
 def log(message, prefix = 'Debug', hush=False):
     if not hush:
-        print(("%s : %s " % (prefix,message)))
+        print("%s : %s " % (prefix,message))
 
 #This function creates the GUI for the autoProGui Supplemental
 def autoProJrGui():
@@ -193,7 +194,7 @@ def updateNameVars():
 def runAutoProJr(self):
     global approveCount
     approveCount=0
-    print(("approveCount = " + str(approveCount)))
+    print ("approveCount = " + str(approveCount))
     
     statusUpdate(self, 'Starting AutoProJr')
     #reset textField values to default for error detection reasons
@@ -232,7 +233,7 @@ def runAutoProJr(self):
     if(nameCheck[0]):
         mel.textField("fileNamedTextField", edit=True, text = "Approved", backgroundColor = apj.bgColor(0))
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         mel.textField("fileNamedTextField", edit = True, text = "Resubmit", backgroundColor = apj.bgColor(100))
     addProgress()
@@ -277,7 +278,7 @@ def runAutoProJr(self):
         percentDefaultNames = "Approved"
         notNamedColor = apj.bgColor(0)
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         percentDefaultNames = "Resubmit"
         notNamedColor = apj.bgColor(99)
@@ -294,7 +295,7 @@ def runAutoProJr(self):
     if ((len(masterNodes)) ==1) and subGroups != False:
         mel.textField("groupedTextField", edit=True, text = "Approved", backgroundColor = (0.0, 0.8, 0.0))
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         mel.textField("groupedTextField", edit = True, text = "Resubmit", backgroundColor = (0.8, 0.0, 0.0))
     mel.textField("masterNodeTextField", edit = True, text = str(masterNodes))
@@ -330,7 +331,7 @@ def runAutoProJr(self):
         percentNotLayer = "Approved"
         notLayeredColor = apj.bgColor(0)
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         percentNotLayer = "Resubmit"
         notLayeredColor = apj.bgColor(99)
@@ -351,7 +352,7 @@ def runAutoProJr(self):
         percentNotFroze = "Approved"
         notFrozeColor = apj.bgColor(0)
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         percentNotFroze = "Resubmit"
         notFrozeColor = apj.bgColor(99)
@@ -372,7 +373,7 @@ def runAutoProJr(self):
         percentWithHistory = "Approved"
         withHistoryColor = apj.bgColor(0)
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         percentWithHistory = "Resubmit"
         withHistoryColor = apj.bgColor(99)
@@ -393,7 +394,7 @@ def runAutoProJr(self):
         percentNotCentered = "Approved"
         notCenteredColor = apj.bgColor(0)
         approveCount += 1
-        print(("approveCount = " + str(approveCount)))
+        print ("approveCount = " + str(approveCount))
     else:
         percentNotCentered = "Resubmit"
         notCenteredColor = apj.bgColor(99)
@@ -473,7 +474,7 @@ def resetValue(self):
     nGonList = []
     log("reset approveCount")
     approveCount = 0
-    print(("approveCount = " + str(approveCount)))
+    print ("approveCount = " + str(approveCount))
     mel.rowLayout( 'progressRowLayout', edit = 1, visible=1)
     mel.progressBar("autoProJrProgress", edit=1,progress = 0)
     mel.rowLayout('autoProJrStatusRowLayout', edit =1, visible = 1)
@@ -514,7 +515,7 @@ def addProgress():
 
 def statusUpdate(self, message):
     mel.text('autoProJrStatus', edit =1, label = message)
-    print(message)
+    print message
 
 
 

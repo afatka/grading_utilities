@@ -43,7 +43,7 @@ def hide_all_layers(layers):
 #debugging log
 def log(message, prefix = 'Debug', hush=False):
     if not hush:
-        print("%s : %s " % (prefix,message))
+        print(("%s : %s " % (prefix,message)))
 
 ##This function selects the provided nodes
 def sel(nodeListInput):
@@ -197,11 +197,11 @@ def defaultCompare(nodeListInput):
             query = object
         for name in defaultNames:
             if name in query:
-                print "checking for %r in %r" % (name, query)
+                print("checking for %r in %r" % (name, query))
                 if name == 'group':
-                    print "Poppout for Group"
+                    print("Poppout for Group")
                     if ('group' in query) and not (('_group' in query) or ('group_' in query)):
-                        print "adding %r to hasDefault" % object
+                        print("adding %r to hasDefault" % object)
                         hasDefaultName.append(object)
                         continue
                     else:

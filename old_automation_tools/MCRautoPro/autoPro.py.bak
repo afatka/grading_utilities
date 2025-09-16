@@ -40,12 +40,10 @@ def hide_all_layers(layers):
 
 
 
-
-
 #debugging log
 def log(message, prefix = 'Debug', hush=False):
     if not hush:
-        print(("%s : %s " % (prefix,message)))
+        print("%s : %s " % (prefix,message))
 
 ##This function selects the provided nodes
 def sel(nodeListInput):
@@ -111,9 +109,9 @@ def nameCheck(yearMonth, projectNumber):
     yearMonth = yearMonth
     projectNumber = projectNumber
     if projectNumber == "04":
-        if fileName.endswith('_ProjectComponent' + projectNumber + '_MCR_' + yearMonth + '.mb'):
+        if fileName.endswith('_FinalProject_MCR_' + yearMonth + '.mb'):
             return [True, fileName]
-    if fileName.endswith('_MCR_' + yearMonth + '_Project' + projectNumber + '.ma'):
+    if fileName.endswith('_Project' + projectNumber + '_MCR_' + yearMonth + '.mb'):
         return [True, fileName]
     else:
         return [False, fileName]
@@ -185,7 +183,7 @@ def listCollect(nodeListInput, nodeType):
 ##This function takes an input and compares it to a default name list. returns a list of inputs that have default matches.
 ##
 def defaultCompare(nodeListInput):
-    defaultNames = ["pCube", "pCylinder",  "pSphere", "pCone", "pPlane", "pTorus", "pPrism", "pPyramid", "pPipe", "pHelix", "pSolid", "nurbsSphere", "nurbsCube", "nurbsCylinder", "nurbsCone", "nurbsPlane", "nurbsTorus", "nurbsCircle", "nurbsSquare", "revolvedSurface", "subdivSphere", "subdivCube", "subdivCylinder", "subdivCone", "subdivPlane", "subdivTorus", "nurbsToPoly", "polySurface", "pasted", "group", "curve", "mirroredCutMesh", "extrudedSurface"]
+    defaultNames = ["pCube", "pCylinder",  "pSphere", "pCone", "pPlane", "pTorus", "pPrism", "pPyramid", "pPipe", "pHelix", "pSolid", "nurbsSphere", "curve", "nurbsCube", "nurbsCylinder", "nurbsCone", "nurbsPlane", "nurbsTorus", "nurbsCircle", "nurbsSquare", "revolvedSurface", "subdivSphere", "subdivCube", "subdivCylinder", "subdivCone", "subdivPlane", "subdivTorus", "nurbsToPoly", "polySurface", "pasted", "group", "mirroredCutMesh", "extrudedSurface"]
     hasDefaultName = []
     nodeList = nodeListInput
     for object in nodeList:
@@ -199,11 +197,11 @@ def defaultCompare(nodeListInput):
             query = object
         for name in defaultNames:
             if name in query:
-                print(("checking for %r in %r" % (name, query)))
+                print "checking for %r in %r" % (name, query)
                 if name == 'group':
-                    print("Poppout for Group")
+                    print "Poppout for Group"
                     if ('group' in query) and not (('_group' in query) or ('group_' in query)):
-                        print(("adding %r to hasDefault" % object))
+                        print "adding %r to hasDefault" % object
                         hasDefaultName.append(object)
                         continue
                     else:
@@ -401,42 +399,7 @@ def laminaFinder(nodeListInput):
             
     return laminaObjects, laminaFaces
 
-###This function checks for nonManifold verts and edges. It returns Total Number of nonManidfold components, Total Objects Effected by nonManifold Geometry.
-###
-#def nonManifoldVertFinder(nodeListInput):
-#    nodeList = nodeListInput
-#    nonManifoldObjects = []
-#    nonManifoldComponents = mel.polyInfo(nodeList, nonManifoldVertices = 1)    
-#    
-#    for item in nonManifoldComponents:
-#        tempHolder = item.split('.')
-#        nonManifoldObjects.append(tempHolder[0])
-#        
-#        
-#    newRange = []
-#    range = []
-#    
-#    print "nonManifoldComponents: %r" % nonManifoldComponents
-#    for component in nonManifoldComponents:
-#        print "component: %r" % component
-#        if ":" in component:
-#            print ": in %r" % component
-#            nonManifoldComponents.remove(component)
-#            range.append(component)
-#            
-#            
-#    newRange = rangeSplit(range)
-#    
-#    
-#    for t in newRange:
-#        nonManifoldComponents.append(t)
-#    nonManifoldComponents = list(set(nonManifoldComponents))
-#    nonManifoldObjects = list(set(nonManifoldObjects))
-#            
-#    return nonManifoldObjects, nonManifoldComponents
 
-
-#nonManifoldEdges = 1,
 
 def nonManifoldFinder(nodeListInput):
     nodeList = nodeListInput

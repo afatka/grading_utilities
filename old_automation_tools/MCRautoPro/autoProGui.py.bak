@@ -5,6 +5,7 @@ Script to create a GUI in Autodesk Maya to hold supplimental grading tool: AutoP
 
 Created By: Adam Fatka
 adam.fatka@gmail.com
+www.fatkaforce.com
 
 The values in the GUI are objects that are flagged compared to total objects that may be effected.
 
@@ -18,16 +19,16 @@ in this case there is one pivot off center in a scene where two objects with piv
 #import Maya commands as mel.
 import maya.cmds as mel
 #imports professionalism functions
-from grading_utilities.old_automation_tools.MCRautoPro import autoPro as ap
+from MCRautoPro import autoPro as ap
 #imports grade pushing functions
-from grading_utilities.old_automation_tools.MCRautoPro import gradePushBoolean as gp
+from MCRautoPro import gradePushBoolean as gp
 #import grade pushing for non-boolean buckets
-from grading_utilities.old_automation_tools.MCRautoPro import gradePushGradiant as gpg
+from MCRautoPro import gradePushGradiant as gpg
 
 #debugging log
 def log(message, prefix = 'Debug', hush=False):
     if not hush:
-        print(("%s : %s " % (prefix,message)))
+        print("%s : %s " % (prefix,message))
 
 #This function creates the GUI for the autoProGui Supplemental
 def autoProGui():
@@ -555,10 +556,10 @@ def pushGrades(self):
         
         #push transforms frozen field info
         if ((int(transforms))>=3):
-            print("transforms is false")
+            print "transforms is false"
             gp.pushTransFroze('self', False)
         else:
-            print("transforms are true")
+            print "transforms are true"
             gp.pushTransFroze('self', True)
         
         #push history deleted field info
@@ -605,9 +606,9 @@ def pushGrades(self):
         gpg.pushHistoryDel('self', int(conHistValue[0]))
         
         pivot = mel.textField('notCenteredPercentTextField', query=1, text =1)
-        print("pivot: %r" % pivot)
+        print "pivot: %r" % pivot
         pivotValue = pivot.split('%')
-        print("pivotValue: %r" % pivotValue[0])
+        print "pivotValue: %r" % pivotValue[0]
         gpg.pushPivotsCenter('self', int(pivotValue[0]))
         
         
@@ -624,7 +625,7 @@ def addProgress():
 
 def statusUpdate(self, message):
     mel.text('autoProStatus', edit =1, label = message)
-    print(message)
+    print message
 
 
 

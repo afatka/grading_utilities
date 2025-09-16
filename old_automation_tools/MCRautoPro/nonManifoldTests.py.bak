@@ -8,7 +8,7 @@ import maya.cmds as mel
 #debugging log
 def log(message, prefix = 'Debug', hush=False):
     if not hush:
-        print(("%s : %s " % (prefix,message)))
+        print("%s : %s " % (prefix,message))
         
 #gather assembly nodes
 def masterGroup():

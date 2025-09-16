@@ -5,7 +5,7 @@
 
 import maya.cmds as cmds
 try:
-	import pyperclip
+	from . import pyperclip
 except:
 	try:
 		import sys
